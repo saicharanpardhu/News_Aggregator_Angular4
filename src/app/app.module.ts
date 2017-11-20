@@ -12,13 +12,19 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { LandingSearchComponent } from './landing-search/landing-search.component';
 import { SearchHeadlineApiService }          from './search-headline-api.service';
-
+import { SpringHeadlineService }          from './spring-headline.service';
 import { SearchViewComponent } from './search-view/search-view.component';
+import { SavedHeadlinesComponent } from './saved-headlines/saved-headlines.component';
+import { SaveHeadlineComponent } from './save-headline/save-headline.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingSearchComponent,
-    SearchViewComponent
+    SearchViewComponent,
+    SavedHeadlinesComponent,
+    SaveHeadlineComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +39,13 @@ import { SearchViewComponent } from './search-view/search-view.component';
         component:LandingSearchComponent
       },
       { path: '', redirectTo: '/landing', pathMatch: 'full' },
-      { path: 'searchview', component: SearchViewComponent}
+      { path: 'searchview', component: SearchViewComponent},
+      { path: 'saveview', component: SaveHeadlineComponent},
+      { path: 'savedheadlines', component: SavedHeadlinesComponent},
+      { path: 'login', component:UserLoginComponent}
     ])
   ],
-  providers: [SearchHeadlineApiService],
+  providers: [SearchHeadlineApiService,SpringHeadlineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,45 @@
+<div class="container-fluid" id="article" style="width:100%;">
+<div class="row">
+<div class="col-sm-12 pull-left"><a  routerLink="/searchview"><<Back</a></div>
+</div>
+
+<ul class=""  style="position:absolute;top:10%;width:80%; left:10%;">
+<li>
+<div class="row">
+<div class="col-sm-1" >
+	<img class="pull-right" src="{{article.urlToImage}}" height="60px">
+</div>
+<div class="col-sm-9" >
+<a href="{{article.url}}" target="_blank">{{article.title}}: </a><br>
+{{article.description}}
+</div>
+<!-- <div class="col-sm-2" style="border-left: 2px solid black;">
+<a (click)="gotoSave(article)">save article</a><br><br>
+</div> -->
+</div> 
+<br><br>
+<div class="row">
+<div class="col-sm-1" >
+	<h5>Comments:   </h5>
+</div>
+<div class="col-sm-8" >
+<input #comment class="form-control input-lg" type="text" [(ngModel)]="textValue" required>
+<br>
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">{{category}}
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li  *ngFor="let category of categorys"  ><a role="menuitem" tabindex="-1"  (click)="setCategory(category.name)">{{category.name}}</a></li>
+      
+    </ul>
+  </div>
+</div>
+<div class="col-sm-1" style="border-left: 2px solid black;text-align: center;">
+
+  <br>
+<a (click)="saveArticle(comment.value)" style="text-align: center;" > save </a>
+</div>
+</div> 
+</li> 
+</ul>
+</div>

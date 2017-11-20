@@ -14,6 +14,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 //import { GetHeadlineService }          from '../get-headline.service';
+import { SpringHeadlineService }          from '../spring-headline.service';
 import { SearchHeadlineApiService }          from '../search-headline-api.service';
 import { Provider }        from '../provider';
 import { Article }        from '../article';
@@ -29,7 +30,7 @@ export class SearchViewComponent implements OnInit {
  public articles: Article[];
   // Observable string streams
   
-  constructor( private searchHeadlineApiService: SearchHeadlineApiService,private cdRef:ChangeDetectorRef ,) {  }
+  constructor(private router: Router, private springHeadlineService: SpringHeadlineService,private searchHeadlineApiService: SearchHeadlineApiService,private cdRef:ChangeDetectorRef ) {  }
   ngOnInit() {
   	  this.searchHeadlineApiService.caseNumber$.subscribe(
             data => {
@@ -45,6 +46,11 @@ export class SearchViewComponent implements OnInit {
   	  
   }
 
-  
+  gotoSave(article: Article): void{
+    let link = ['/saveview'];
+    this.router.navigate(link);
+    this.springHeadlineService.pushArticle(article);
+    console.log('sent article from searchview: '+ article.title );
+  } 
 
 }
