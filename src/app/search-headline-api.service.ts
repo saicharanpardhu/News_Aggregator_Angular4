@@ -53,7 +53,7 @@ private baseUrl = '';
   search(term: string): Observable<Provider[]> {
     return this.http
               .get(`api/providers/?name=${term}`)
-              .map(response => response.json().data as Provider[]);
+              .map(response => response.json()as Provider[]);}
   }
 
-}
+
